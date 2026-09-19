@@ -9,6 +9,8 @@ const int NUM_DAYS = 7;
 string runner_data[NUM_RUNNERS];
 string runner_names[NUM_RUNNERS];
 int runner_times[NUM_RUNNERS][NUM_DAYS];
+int totals[NUM_RUNNERS];
+int averages[NUM_RUNNERS];
 
 static void readRunnerData()
 {
@@ -33,9 +35,7 @@ static void sortRunnerData()
 	for (int i = 0; i < NUM_RUNNERS; ++i) {
 		std::istringstream iss(runner_data[i]);
 		std::string token;
-
 		if (!(iss >> token)) continue;
-
 		for (int j = 0; j < NUM_DAYS; ++j) {
 			if (!(iss >> token)) {
 				runner_times[i][j] = 0;
@@ -50,10 +50,28 @@ static void sortRunnerData()
 	}
 }
 
+static void calculateTotalsAndAverages()
+{
+	for (int i = 0; i < NUM_RUNNERS; ++i) {
+		totals[i] = 0;
+		for (int j = 0; j < NUM_DAYS; ++j) {
+			totals[i] += runner_times[i][j];
+		}
+		averages[i] = totals[i] / NUM_DAYS;
+	}
+}
+
+static void displayResults()
+{
+
+}
+
 int main()
 {
 	readRunnerData();
 	sortRunnerData();
+	calculateTotalsAndAverages();
+	displayResults();
 	for (int i = 0; i < NUM_RUNNERS; ++i) {
 		cout << runner_names[i] << endl;
 	}
