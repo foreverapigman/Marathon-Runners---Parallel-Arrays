@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Marathon Runners - Parallel Arrays/Marathon Runners - Parallel Arrays.vcxproj" />
+  <Project Path="Marathon Runners - Parallel Arrays/Marathon Runners - Parallel Arrays.vcxproj" Id="67c0b1c1-1727-47f5-84ae-02012f7796bb" />
 </Solution>

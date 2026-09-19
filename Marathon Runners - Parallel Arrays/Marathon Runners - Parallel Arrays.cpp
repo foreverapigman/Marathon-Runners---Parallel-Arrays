@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include <fstream>
 #include <sstream>
 using namespace std;
@@ -24,8 +25,6 @@ static void readRunnerData()
 		}
 	}
 }
-
-//example of a line of data from runner_data: Johnson 05 11 12 41 10 10 17
 
 static void sortRunnerData()
 {
@@ -63,7 +62,29 @@ static void calculateTotalsAndAverages()
 
 static void displayResults()
 {
+	cout << left;
 
+	cout << setw(12) << "Name"
+		<< setw(12) << "Sunday"
+		<< setw(12) << "Monday"
+		<< setw(12) << "Tuesday"
+		<< setw(12) << "Wednesday"
+		<< setw(12) << "Thursday"
+		<< setw(12) << "Friday"
+		<< setw(12) << "Saturday"
+		<< setw(12) << "Total"
+		<< setw(12) << "Average" << endl;
+
+	cout << "--------------------------------------------------------------------------------------------------------------------" << endl;
+
+	for (int i = 0; i < NUM_RUNNERS; ++i) {
+		cout << setw(12) << runner_names[i];
+		for (int j = 0; j < NUM_DAYS; ++j) {
+			cout << setw(12) << runner_times[i][j];
+		}
+		cout << setw(12) << totals[i]
+			<< setw(12) << averages[i] << endl;
+	}
 }
 
 int main()
@@ -72,12 +93,4 @@ int main()
 	sortRunnerData();
 	calculateTotalsAndAverages();
 	displayResults();
-	for (int i = 0; i < NUM_RUNNERS; ++i) {
-		cout << runner_names[i] << endl;
-	}
-	for (int i = 0; i < NUM_RUNNERS; ++i) {
-		for (int j = 0; j < NUM_DAYS; ++j) {
-			cout << runner_times[i][j] << endl;
-		}
-	}
 }
